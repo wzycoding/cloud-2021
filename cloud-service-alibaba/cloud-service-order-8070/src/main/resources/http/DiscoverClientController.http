@@ -1,0 +1,12 @@
+#获取注册中心所有服务
+GET http://localhost:8070/discover/client/getAllServices
+Accept: application/json
+
+
+###
+
+#获取服务的所有实例信息
+GET http://localhost:8070/discover/client/getAllInstances?serviceId=user-service
+Accept: application/json
+
+###

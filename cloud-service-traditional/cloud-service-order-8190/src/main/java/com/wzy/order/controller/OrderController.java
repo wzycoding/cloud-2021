@@ -3,6 +3,7 @@ package com.wzy.order.controller;
 import com.alibaba.fastjson.JSON;
 import com.wzy.cloud.dto.CommonResponse;
 import com.wzy.order.GoodsIntegrationService;
+import com.wzy.order.config.OrderProperties;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,6 +32,9 @@ public class OrderController {
     @Resource
     private GoodsIntegrationService goodsIntegrationService;
 
+    @Resource
+    private OrderProperties orderProperties;
+
     @GetMapping("/getGoodsInfo")
     public CommonResponse<String> getGoodsInfo(@RequestParam(value = "goodsId") Long goodsId) {
 //        //直接使用url地址进行访问
@@ -40,6 +44,12 @@ public class OrderController {
 
         //使用openfeign
         return callByFeign(goodsId);
+    }
+
+    @GetMapping("/getConfig")
+    public CommonResponse<String> getConfig() {
+
+        return CommonResponse.success(orderProperties.getDesc());
     }
 
     /**
@@ -75,4 +85,6 @@ public class OrderController {
     private CommonResponse<String> callByFeign(Long goodsId) {
         return goodsIntegrationService.getInfo(goodsId);
     }
+
+
 }

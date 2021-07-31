@@ -1,0 +1,4 @@
+###手动触发端点属性配置
+POST http://localhost:8190/actuator/refresh
+
+###

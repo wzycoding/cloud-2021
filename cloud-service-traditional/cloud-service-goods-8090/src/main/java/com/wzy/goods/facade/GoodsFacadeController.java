@@ -1,6 +1,7 @@
 package com.wzy.goods.facade;
 
 import com.wzy.cloud.dto.CommonResponse;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @version 1.0
  * @date 2021/7/15 3:51 下午
  */
+@Slf4j
 @RequestMapping("facade/goods")
 @RestController
 public class GoodsFacadeController {
@@ -25,6 +27,7 @@ public class GoodsFacadeController {
         if (goodsId <= 0) {
             throw new IllegalArgumentException("商品的id不能小于等于0");
         }
+        log.info("远程调用：商品id:{}", goodsId);
         return CommonResponse.success("MacBook Pro 16英寸, 实例端口号为：" + port);
     }
 }

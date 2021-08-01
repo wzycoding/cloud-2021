@@ -1,5 +1,6 @@
 package com.wzy.order;
 
+import com.alibaba.fastjson.JSON;
 import com.wzy.cloud.dto.CommonResponse;
 import com.wzy.order.feign.GoodsFeignService;
 import lombok.extern.slf4j.Slf4j;
@@ -22,7 +23,11 @@ public class GoodsIntegrationService {
 
     public CommonResponse<String> getInfo(Long goodsId) {
         try {
-            return goodsFeignService.getInfo(goodsId);
+            CommonResponse<String> resultInfo = goodsFeignService.getInfo(goodsId);
+
+            log.info("获取商品信息远程调用结果：{}", JSON.toJSONString(resultInfo));
+
+            return resultInfo;
         } catch (Exception ex) {
             log.error(ex.getMessage(), ex);
 

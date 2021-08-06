@@ -1,5 +1,6 @@
 package com.wzy.goods;
 
+import com.wzy.goods.datasource.DataSourceRegister;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
@@ -7,6 +8,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.cloud.netflix.hystrix.EnableHystrix;
 import org.springframework.cloud.openfeign.EnableFeignClients;
+import org.springframework.context.annotation.Import;
 
 /**
  * 商品service 启动类
@@ -20,6 +22,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
  * @version 1.0
  * @date 2021/7/15 1:54 下午
  */
+@Import(DataSourceRegister.class)
 @EnableFeignClients
 @EnableEurekaClient
 @EnableDiscoveryClient

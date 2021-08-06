@@ -23,6 +23,7 @@
         <module>cloud-gateway-zuul-9010</module>
         <module>cloud-service-alibaba</module>
         <module>cloud-config-7100</module>
+        <module>cloud-common/component-redis-starter</module>
     </modules>
 
     <properties>
